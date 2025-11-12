@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animal Vision Simulator</title>
+  <style>
+    video {
+      width: 50%;
+      height: auto;
+      filter: none; /* Filter will change using JS */
+      
+    }
+   body{
+    background-color:darkblue;
+    margin:60px;
+}
+ header{
+    text-align:center;
+    background-color:skyblue;
+    padding:20px;
+    margin:90px;
+}
+select{
+color:red;
+background-color:yellow;
+
+}
+#splash img#logo {
+  width: 160px;         /* change size if needed */
+  height: auto;
+  border-radius: 12px;  /* remove this if you want original shape */
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
+}
+#splash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #1c1c1c, #000000);
+  color: #ffd369;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1.2s ease-out;
+}
+
+#splash h1 {
+  font-size: 36px;
+  margin: 0;
+  text-shadow: 0px 0px 10px rgba(255, 211, 105, 0.6);
+}
+
+#splash p {
+  margin-top: 8px;
+  font-size: 18px;
+  opacity: 0.8;
+}
+footer{
+text-align:center;
+
+}
+  </style>
+</head>
+<body>
+
+<div id="splash">
+<image src="file:///C:/Users/Admin/Desktop/pngtree-cute-yellow-bee-cartoon-illustration-png-image_6653635.png" id="logo"
+<h1> Alter Eyes</h1>
+<p>see the world through ther eyes</p>
+</div>
+
+<header>
+<select id="animal">
+  <option value="none">Select an Animal</option>
+  <option value="dog">Dog</option>
+  <option value="ant">ant</option>
+  <option value="elephant">elephant</option>
+  <option value="snake">snake</option>  
+  <option value="owel">owel</option>
+  <option value="sparrow">sparrow</option>
+  <option value="cat">peacock</option>
+  <option value="peacock">Cat</option>
+  <option value="bee">Bee</option>
+</select>
+</header>
+<footer>
+<button onclick="dogInfo()">Dog Info 🐶</button>
+<div id="output"></div>
+<button onclick="antInfo()">ant Info 🐶</button>
+<div id="output"></div>
+<button onclick="elephantInfo()">elephant Info 🐶</button>
+<div id="output"></div>
+<button onclick="snakeInfo()">snake Info 🐶</button>
+<div id="output"></div>
+<button onclick="owelInfo()">owel Info 🐶</button>
+<div id="output"></div>
+<button onclick="sparrowInfo()">sparrow Info 🐶</button>
+<div id="output"></div>
+<button onclick="catInfo()">Cat Info 🐶</button>
+<div id="output"></div>
+<button onclick="peacockInfo()">peacock Info 🐶</button>
+<div id="output"></div>
+<button onclick="beeInfo()">bee Info 🐶</button>
+<div id="output"></div>
+<video id="camera" autoplay></video>
+</footer>
+<script>
+ window.onload = () => {
+  setTimeout(() => {
+    document.getElementById("splash").style.opacity = "0";
+    setTimeout(() => {
+      document.getElementById("splash").style.display = "none";
+    }, 1200); // Wait for fade-out to finish
+  }, 2500); // Screen visible for 2.5 seconds
+};
+  const video = document.getElementById("camera");
+  navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+    video.srcObject = stream;
+  });
+  document.getElementById("animal").addEventListener("change", function() {
+    if (this.value === "dog") video.style.filter = "grayscale(60%) blur(1px)";
+    if (this.value === "ant") video.style.filter = "grayscale(30%) brightness(120%) contrast(150%) hue-rotate(-40deg)";
+    if (this.value === "elephant") video.style.filter = "grayscale(50%) saturate(60%) contrast(110%) blur(1px)";
+    if (this.value === "snake") video.style.filter = "contrast(200%) saturate(250%) hue-rotate(90deg) brightness(110%) blur(1px)";
+    if (this.value === "owel") video.style.filter = "grayscale(90%) saturate(0) brightness(200%) blur(0.7px)";
+    if (this.value === "sparrow") video.style.filter = "hue-rotate(-20deg) saturate(130%) brightness(110%) contrast(120%)";
+    if (this.value === "cat") video.style.filter = "hue-rotate(90deg) saturate(2)";
+    if (this.value === "peacock") video.style.filter = "hue-rotate(30deg) brightness(105%) contrast(115%) saturate(200%)";
+    if (this.value === "bee") video.style.filter = "grayscale(30%) hue-rotate(-40deg) saturate(150) brightness(120%) contrast(130%)";    
+   });
+</script>
+<script>
+function dogInfo() {
+  const text = "Dogs see mostly in blue and yellow colors.They cannot see red and green clearly. Their strongest sense is smell,which is thousands of times better than humans.They understand feelings through tone, body language, and scent.";
+  
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function dogInfo() {
+  const text = "Dogs see mostly in blue and yellow colors.They cannot see red and green clearly. Their strongest sense is smell,which is thousands of times better than humans.They understand feelings through tone, body language, and scent.";
+  
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function antInfo() {
+  const text = "Most ants have weak eyesight, and some are nearly blind.They sense the world mostly through smell using their antennae.They communicate and find paths using chemical trails.They work by teamwork rather than individual thinking.";  
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function elephantInfo() {
+  const text = "Elephants have weak color vision.They mainly rely on smell, sound, and ground vibrations to understand the world.They are intelligent, emotional, and remember places and individuals for many years.";
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function snakeInfo() {
+  const text = "Many snakes do not see sharp images in daylight.Some snakes can sense heat from warm bodies using special heat pits.They detect scent by flicking their tongue.They follow movement, body heat, and smell more than color.";
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function owelInfo() {
+  const text = "Owls see extremely well in the dark because their eyes are large and light-sensitive.They do not see many colors; their vision is mostly shades of gray at night.Their hearing is very powerful and they can locate prey by sound alone.";
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function sparrowInfo() {
+  const text = "Sparrows see full color and ultraviolet light.Their eyes process movement very fast, helping them fly safely.They remember routes, nests, and places well during travel.";
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function catInfo() {
+  const text = "Dogs see mostly in blue and yellow colors.They cannot see red and green clearly. Their strongest sense is smell,which is thousands of times better than humans.They understand feelings through tone, body language, and scent.";
+  
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function peacockInfo() {
+  const text = "Peacocks can see a wider range of colors than humans, including ultraviolet.Their feathers reflect light in many directions, creating shining patterns.They use these colors and patterns to attract mates and communicate.";
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+function beeInfo() {
+  const text = "Bee see the world in  blue yellow and ultraviolate light they cann't see red.flowers show ultraviolate pattern that guides bee to nectar.Bee comunicateusing waggle dance to show direction of distance from food. "; 
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+  let index = 0;
+
+
+  function typeLetter() {
+    if (index < text.length) {
+      output.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeLetter, 50); // typing speed (lower = faster)
+    }
+  }
+  typeLetter();
+
+  // Voice / Text-to-Speech
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "en-IN"; // Indian accent voice
+  voice.rate = 1;       // speaking speed
+  speechSynthesis.speak(voice);
+}
+
+</script>
+</body>
+</html>
